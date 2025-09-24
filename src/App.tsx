@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
+import { Tooltip, TooltipTrigger, TooltipContent } from './components/ui/tooltip';
 import { getRankedExercises, thoughtDistortions } from './utils/algorithm';
 
 function App() {
@@ -18,13 +19,19 @@ function App() {
           className="flex flex-wrap gap-3 justify-center"
         >
           {thoughtDistortions.map((distortion) => (
-            <ToggleGroupItem
-              key={distortion.id}
-              value={distortion.id}
-              className="px-4 py-2 min-w-fit flex-0"
-            >
-              {distortion.name}
-            </ToggleGroupItem>
+            <Tooltip key={distortion.id} delayDuration={700}>
+              <TooltipTrigger asChild>
+                <ToggleGroupItem
+                  value={distortion.id}
+                  className="px-4 py-2 min-w-fit flex-0"
+                >
+                  {distortion.name}
+                </ToggleGroupItem>
+              </TooltipTrigger>
+              <TooltipContent>
+                {distortion.description}
+              </TooltipContent>
+            </Tooltip>
           ))}
         </ToggleGroup>
       </div>
