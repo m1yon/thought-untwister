@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 import { Tooltip, TooltipTrigger, TooltipContent } from './components/ui/tooltip';
-import CategoryBadge from './components/CategoryBadge';
+import RecoveryMethodCard from './components/RecoveryMethodCard';
 import { getRankedExercises as getRankedRecoveryMethods, thoughtDistortions, type ThoughtDistortionID } from './utils/algorithm';
 
 function App() {
@@ -42,10 +42,7 @@ function App() {
         {recommendedRecoveryMethods.length > 0 ? (
           <div className="flex flex-col gap-4 w-full">
             {recommendedRecoveryMethods.map((recoveryMethod) => (
-              <div key={recoveryMethod.id} className="p-4 border rounded-lg">
-                <p className="font-medium text-lg">{recoveryMethod.name}</p>
-                <CategoryBadge category={recoveryMethod.category} subcategory={recoveryMethod.subcategory} />
-              </div>
+              <RecoveryMethodCard key={recoveryMethod.id} recoveryMethod={recoveryMethod} />
             ))}
           </div>
         ) : (
