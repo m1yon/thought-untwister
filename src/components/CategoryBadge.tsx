@@ -1,9 +1,10 @@
 interface CategoryBadgeProps {
   category: string;
   subcategory?: string;
+  disabled?: boolean;
 }
 
-function CategoryBadge({ category, subcategory }: CategoryBadgeProps) {
+function CategoryBadge({ category, subcategory, disabled }: CategoryBadgeProps) {
   const getCategoryColor = (category: string) => {
     const colorMap: { [key: string]: string } = {
       'Basic': 'bg-blue-300 text-blue-950',
@@ -13,6 +14,11 @@ function CategoryBadge({ category, subcategory }: CategoryBadgeProps) {
       'Exposure': 'bg-purple-300 text-purple-950',
       'Interpersonal': 'bg-emerald-300 text-emerald-950',
     };
+
+    if (disabled) {
+      return 'bg-gray-200 text-gray-500';
+    }
+
     return colorMap[category] || 'bg-gray-300 text-gray-950';
   };
 
