@@ -151,6 +151,25 @@ export const recoveryMethods: RecoveryMethod[] = [
       "other-blame": 2,
     },
   },
+  {
+    id: "straightforward-technique",
+    name: "Straightforward Technique",
+    category: "Basic",
+    scores: {
+      "all-or-nothing-thinking": 1,
+      overgeneralization: 1,
+      "mental-filter": 1,
+      "discounting-the-positives": 1,
+      "mind-reading": 1,
+      "fortune-telling": 1,
+      "magnification-and-minimization": 1,
+      "emotional-reasoning": 1,
+      "should-statements": 1,
+      labeling: 1,
+      "self-blame": 1,
+      "other-blame": 0,
+    },
+  },
 ];
 
 /**
