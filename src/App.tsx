@@ -20,14 +20,14 @@ function App() {
         >
           {thoughtDistortions.map((distortion) => (
             <Tooltip key={distortion.id} delayDuration={700}>
-              <TooltipTrigger asChild>
-                <ToggleGroupItem
-                  value={distortion.id}
-                  className="px-4 py-2 min-w-fit flex-0"
-                >
+              <ToggleGroupItem
+                value={distortion.id}
+                className="px-4 py-2 min-w-fit flex-0"
+              >
+                <TooltipTrigger>
                   {distortion.name}
-                </ToggleGroupItem>
-              </TooltipTrigger>
+                </TooltipTrigger>
+              </ToggleGroupItem>
               <TooltipContent>
                 {distortion.description}
               </TooltipContent>
