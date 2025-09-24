@@ -38,13 +38,16 @@ function App() {
       </div>
 
       <div>
-        <h2 className="text-center text-xl font-semibold pb-4">Recommended Recovery Methods</h2>
+        <h2 className="text-center text-xl font-semibold mb-1">Recommended Recovery Methods</h2>
         {recommendedRecoveryMethods.length > 0 ? (
-          <div className="flex flex-col gap-4 w-full">
-            {recommendedRecoveryMethods.map((recoveryMethod) => (
-              <RecoveryMethodCard key={recoveryMethod.id} recoveryMethod={recoveryMethod} />
-            ))}
-          </div>
+          <>
+            <p className="text-center text-gray-600 text-sm mb-4">{recommendedRecoveryMethods.length} recovery methods found</p>
+            <div className="flex flex-col gap-4 w-full">
+              {recommendedRecoveryMethods.map((recoveryMethod) => (
+                <RecoveryMethodCard key={recoveryMethod.id} recoveryMethod={recoveryMethod} />
+              ))}
+            </div>
+          </>
         ) : (
           <p className="text-gray-500 text-center">Select distortions to see recommended exercises</p>
         )}
