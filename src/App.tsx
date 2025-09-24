@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 import { Tooltip, TooltipTrigger, TooltipContent } from './components/ui/tooltip';
+import CategoryBadge from './components/CategoryBadge';
 import { getRankedExercises, thoughtDistortions } from './utils/algorithm';
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
             {recommendations.map((recommendation) => (
               <div key={recommendation.id} className="flex flex-col items-center justify-center gap-2 p-4 border rounded-lg">
                 <p className="font-medium">{recommendation.name}</p>
-                <p className="text-sm text-gray-600">Category: {recommendation.category}</p>
+                <CategoryBadge category={recommendation.category} />
                 <p className="text-sm text-gray-600">Score: {recommendation.totalScore}</p>
               </div>
             ))}
