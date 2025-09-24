@@ -8,20 +8,20 @@ function App() {
   const recommendations = getRankedExercises(selectedDistortions);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-8 p-8">
-      <div className="flex flex-col items-center gap-4">
-        <h1 className="text-2xl font-bold">Select Thought Distortions</h1>
+    <div className="p-8 max-w-4xl mx-auto mt-16">
+      <div className="text-center mb-8">
+        <h1 className="text-2xl font-bold pb-4">Select Thought Distortions</h1>
         <ToggleGroup
           type="multiple"
           value={selectedDistortions}
           onValueChange={setSelectedDistortions}
-          className="flex flex-wrap justify-center gap-3 max-w-4xl"
+          className="flex flex-wrap gap-3 justify-center"
         >
           {thoughtDistortions.map((distortion) => (
             <ToggleGroupItem
               key={distortion.id}
               value={distortion.id}
-              className="px-4 py-2 min-w-fit"
+              className="px-4 py-2 min-w-fit flex-0"
             >
               {distortion.name}
             </ToggleGroupItem>
