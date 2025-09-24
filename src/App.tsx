@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 import { Tooltip, TooltipTrigger, TooltipContent } from './components/ui/tooltip';
 import CategoryBadge from './components/CategoryBadge';
-import { getRankedExercises, thoughtDistortions, type ThoughtDistortionID } from './utils/algorithm';
+import { getRankedExercises as getRankedRecoveryMethods, thoughtDistortions, type ThoughtDistortionID } from './utils/algorithm';
 
 function App() {
   const [selectedDistortions, setSelectedDistortions] = useState<ThoughtDistortionID[]>([]);
 
-  const recommendations = getRankedExercises(selectedDistortions);
+  const recommendedRecoveryMethods = getRankedRecoveryMethods(selectedDistortions);
 
   return (
     <div className="p-8 max-w-4xl mx-auto mt-16">
@@ -37,20 +37,19 @@ function App() {
         </ToggleGroup>
       </div>
 
-      <div className="flex flex-col items-center gap-4">
-        <h2 className="text-xl font-semibold">Recommended Exercises</h2>
-        {recommendations.length > 0 ? (
-          <div className="flex flex-col gap-4">
-            {recommendations.map((recommendation) => (
-              <div key={recommendation.id} className="flex flex-col items-center justify-center gap-2 p-4 border rounded-lg">
-                <p className="font-medium">{recommendation.name}</p>
-                <CategoryBadge category={recommendation.category} subcategory={recommendation.subcategory} />
-                <p className="text-sm text-gray-600">Score: {recommendation.totalScore}</p>
+      <div>
+        <h2 className="text-center text-xl font-semibold pb-4">Recommended Recovery Methods</h2>
+        {recommendedRecoveryMethods.length > 0 ? (
+          <div className="flex flex-col gap-4 w-full">
+            {recommendedRecoveryMethods.map((recoveryMethod) => (
+              <div key={recoveryMethod.id} className="p-4 border rounded-lg">
+                <p className="font-medium text-lg">{recoveryMethod.name}</p>
+                <CategoryBadge category={recoveryMethod.category} subcategory={recoveryMethod.subcategory} />
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-gray-500">Select distortions to see recommended exercises</p>
+          <p className="text-gray-500 text-center">Select distortions to see recommended exercises</p>
         )}
       </div>
     </div>
