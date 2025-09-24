@@ -2,7 +2,7 @@
  * Represents a single cognitive distortion.
  */
 export interface ThoughtDistortion {
-  id: string;
+  id: ThoughtDistortionID;
   name: string;
   description: string;
 }
@@ -20,14 +20,26 @@ export interface RecoveryMethod {
   category: string;
   // This property will be added dynamically by the ranking function
   totalScore?: number;
-  scores: {
-    [distortionId: string]: number;
-  };
+  scores: Record<ThoughtDistortionID, number>;
 }
+
+export type ThoughtDistortionID =
+  | "all-or-nothing-thinking"
+  | "overgeneralization"
+  | "mental-filter"
+  | "discounting-the-positives"
+  | "mind-reading"
+  | "fortune-telling"
+  | "magnification-and-minimization"
+  | "emotional-reasoning"
+  | "should-statements"
+  | "labeling"
+  | "self-blame"
+  | "other-blame";
 
 export const thoughtDistortions: ThoughtDistortion[] = [
   {
-    id: "all-or-nothing",
+    id: "all-or-nothing-thinking",
     name: "All-or-Nothing Thinking",
     description: "Viewing situations in absolute, black-and-white terms.",
   },
@@ -44,7 +56,7 @@ export const thoughtDistortions: ThoughtDistortion[] = [
       "Dwelling on a single negative detail, filtering out all positive aspects.",
   },
   {
-    id: "discounting-positives",
+    id: "discounting-the-positives",
     name: "Discounting the Positives",
     description:
       "Insisting that your positive qualities or accomplishments don't count.",
@@ -62,7 +74,7 @@ export const thoughtDistortions: ThoughtDistortion[] = [
       "Predicting that things will turn out badly as an established fact.",
   },
   {
-    id: "magnification-minimization",
+    id: "magnification-and-minimization",
     name: "Magnification & Minimization",
     description:
       "Blowing things out of proportion or shrinking their importance.",
@@ -102,259 +114,22 @@ export const thoughtDistortions: ThoughtDistortion[] = [
 export const recoveryMethods: RecoveryMethod[] = [
   // Basic
   {
-    id: "examine-the-evidence",
-    name: "Examine the Evidence",
-    category: "Basic",
-    scores: {
-      overgeneralization: 2,
-      "mental-filter": 2,
-      "discounting-positives": 2,
-      "mind-reading": 2,
-      "fortune-telling": 2,
-      "magnification-minimization": 1,
-      "emotional-reasoning": 1,
-      labeling: 2,
-      "self-blame": 1,
-      "other-blame": 1,
-    },
-  },
-  {
-    id: "double-standard",
-    name: "Double Standard Technique",
-    category: "Basic",
-    scores: {
-      "all-or-nothing": 1,
-      "should-statements": 2,
-      labeling: 2,
-      "self-blame": 2,
-    },
-  },
-  {
     id: "positive-reframing",
     name: "Positive Reframing",
     category: "Basic",
     scores: {
-      "mental-filter": 1,
-      "discounting-positives": 1,
-      "magnification-minimization": 1,
-      "other-blame": 1,
-    },
-  },
-  {
-    id: "experimental-technique",
-    name: "Experimental Technique",
-    category: "Basic",
-    scores: {
-      "all-or-nothing": 1,
-      overgeneralization: 2,
-      "discounting-positives": 1,
-      "mind-reading": 2,
-      "fortune-telling": 2,
-      "magnification-minimization": 2,
-      labeling: 1,
-      "self-blame": 1,
-    },
-  },
-  {
-    id: "survey-technique",
-    name: "Survey Technique",
-    category: "Basic",
-    scores: {
-      overgeneralization: 2,
-      "mind-reading": 2,
-      "magnification-minimization": 1,
-      labeling: 2,
-      "self-blame": 2,
-    },
-  },
-  {
-    id: "reattribution",
-    name: "Reattribution",
-    category: "Basic",
-    scores: { "self-blame": 2, "other-blame": 2 },
-  },
-  {
-    id: "socratic-method",
-    name: "Socratic Method",
-    category: "Cognitive",
-    scores: {
-      "all-or-nothing": 2,
-      overgeneralization: 2,
-      "mental-filter": 1,
-      "discounting-positives": 1,
-      "magnification-minimization": 1,
-      "emotional-reasoning": 2,
-      "should-statements": 1,
-      labeling: 2,
-      "self-blame": 1,
-      "other-blame": 1,
-    },
-  },
-  {
-    id: "thinking-in-shades",
-    name: "Thinking in Shades of Gray",
-    category: "Cognitive",
-    scores: {
-      "all-or-nothing": 2,
-      overgeneralization: 1,
-      "mental-filter": 1,
-      "magnification-minimization": 1,
-      labeling: 1,
-    },
-  },
-  {
-    id: "semantic-method",
-    name: "Semantic Method",
-    category: "Cognitive",
-    scores: { "all-or-nothing": 2, overgeneralization: 2, labeling: 2 },
-  },
-  {
-    id: "define-terms",
-    name: "Let's Define Terms",
-    category: "Cognitive",
-    scores: { "all-or-nothing": 2, overgeneralization: 1, labeling: 2 },
-  },
-  {
-    id: "be-specific",
-    name: "Be Specific",
-    category: "Cognitive",
-    scores: { "all-or-nothing": 2, overgeneralization: 1, labeling: 1 },
-  },
-  {
-    id: "worst-best-average",
-    name: "Worst, Best, Average Analysis",
-    category: "Cognitive",
-    scores: { "fortune-telling": 2, "magnification-minimization": 2 },
-  },
-  {
-    id: "self-monitoring",
-    name: "Self-Monitoring",
-    category: "Cognitive",
-    scores: {
-      "all-or-nothing": 1,
-      overgeneralization: 1,
-      "mental-filter": 1,
-      "discounting-positives": 1,
-      "magnification-minimization": 1,
-      "emotional-reasoning": 1,
-      "should-statements": 1,
-      labeling: 1,
-      "self-blame": 1,
-      "other-blame": 1,
-    },
-  },
-  {
-    id: "shame-attacking",
-    name: "Shame-Attacking Exercises",
-    category: "Exposure",
-    scores: { "fortune-telling": 1, "should-statements": 2, "self-blame": 1 },
-  },
-  {
-    id: "externalization-of-voices",
-    name: "Externalization of Voices",
-    category: "Exposure",
-    scores: { "all-or-nothing": 1, "should-statements": 2, "self-blame": 1 },
-  },
-  {
-    id: "feared-fantasy",
-    name: "Feared Fantasy",
-    category: "Exposure",
-    scores: { "fortune-telling": 1, "magnification-minimization": 1 },
-  },
-  {
-    id: "acceptance-paradox",
-    name: "Acceptance Paradox",
-    category: "Basic",
-    scores: {
-      "all-or-nothing": 1,
-      overgeneralization: 1,
-      "magnification-minimization": 2,
-      "emotional-reasoning": 2,
-      "should-statements": 2,
-      "self-blame": 2,
-      "other-blame": 2,
-    },
-  },
-  {
-    id: "time-projection",
-    name: "Time Projection",
-    category: "Basic",
-    scores: { "fortune-telling": 1, "magnification-minimization": 1 },
-  },
-  {
-    id: "downward-arrow",
-    name: "Individual Downward Arrow",
-    category: "Uncovering",
-    scores: {
-      "all-or-nothing": 1,
-      overgeneralization: 1,
-      "mental-filter": 1,
-      "discounting-positives": 1,
-      "mind-reading": 1,
-      "fortune-telling": 1,
-      "magnification-minimization": 1,
-      "emotional-reasoning": 1,
-      "should-statements": 1,
-      labeling: 1,
-      "self-blame": 1,
-      "other-blame": 1,
-    },
-  },
-  {
-    id: "what-if-technique",
-    name: "What-If Technique",
-    category: "Uncovering",
-    scores: {
-      "fortune-telling": 2,
-      "magnification-minimization": 2,
-      "emotional-reasoning": 1,
-    },
-  },
-  {
-    id: "cost-benefit-analysis",
-    name: "Cost-Benefit Analysis",
-    category: "Basic",
-    scores: {
-      "all-or-nothing": 2,
-      overgeneralization: 2,
-      "mental-filter": 2,
-      "discounting-positives": 2,
-      "mind-reading": 1,
-      "fortune-telling": 2,
-      "magnification-minimization": 2,
-      "emotional-reasoning": 2,
-      "should-statements": 2,
-      labeling: 2,
-      "self-blame": 1,
-      "other-blame": 2,
-    },
-  },
-  {
-    id: "devils-advocate",
-    name: "Devil's Advocate Technique",
-    category: "Basic",
-    scores: { "emotional-reasoning": 1 },
-  },
-  {
-    id: "anti-procrastination-sheet",
-    name: "Anti-Procrastination Sheet",
-    category: "Motivational",
-    scores: {
-      "all-or-nothing": 1,
-      "fortune-telling": 1,
-      "magnification-minimization": 1,
-      labeling: 1,
-    },
-  },
-  {
-    id: "five-secrets-communication",
-    name: "Five Secrets of Effective Communication",
-    category: "Interpersonal",
-    scores: {
-      "mind-reading": 2,
-      "emotional-reasoning": 1,
-      "should-statements": 1,
-      "other-blame": 2,
+      "all-or-nothing-thinking": 1,
+      overgeneralization: 0,
+      "mental-filter": 0,
+      "discounting-the-positives": 0,
+      "mind-reading": 0,
+      "fortune-telling": 0,
+      "magnification-and-minimization": 0,
+      "emotional-reasoning": 0,
+      "should-statements": 0,
+      labeling: 0,
+      "self-blame": 0,
+      "other-blame": 0,
     },
   },
 ];
@@ -364,7 +139,7 @@ export const recoveryMethods: RecoveryMethod[] = [
  * of exercises, ordered from most to least effective.
  */
 export function getRankedExercises(
-  selectedDistortionIds: string[],
+  selectedDistortionIds: ThoughtDistortionID[],
 ): RecoveryMethod[] {
   if (!selectedDistortionIds || selectedDistortionIds.length === 0) {
     return [];

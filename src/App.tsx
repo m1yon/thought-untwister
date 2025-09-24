@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 import { Tooltip, TooltipTrigger, TooltipContent } from './components/ui/tooltip';
 import CategoryBadge from './components/CategoryBadge';
-import { getRankedExercises, thoughtDistortions } from './utils/algorithm';
+import { getRankedExercises, thoughtDistortions, type ThoughtDistortionID } from './utils/algorithm';
 
 function App() {
-  const [selectedDistortions, setSelectedDistortions] = useState<string[]>([]);
+  const [selectedDistortions, setSelectedDistortions] = useState<ThoughtDistortionID[]>([]);
 
   const recommendations = getRankedExercises(selectedDistortions);
 
@@ -16,7 +16,7 @@ function App() {
         <ToggleGroup
           type="multiple"
           value={selectedDistortions}
-          onValueChange={setSelectedDistortions}
+          onValueChange={(distortions) => setSelectedDistortions(distortions as ThoughtDistortionID[])}
           className="flex flex-wrap gap-3 justify-center"
         >
           {thoughtDistortions.map((distortion) => (
