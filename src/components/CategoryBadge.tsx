@@ -1,8 +1,9 @@
 interface CategoryBadgeProps {
   category: string;
+  subcategory?: string;
 }
 
-function CategoryBadge({ category }: CategoryBadgeProps) {
+function CategoryBadge({ category, subcategory }: CategoryBadgeProps) {
   const getCategoryColor = (category: string) => {
     const colorMap: { [key: string]: string } = {
       'Basic': 'bg-blue-300 text-blue-950',
@@ -17,7 +18,7 @@ function CategoryBadge({ category }: CategoryBadgeProps) {
 
   return (
     <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${getCategoryColor(category)}`}>
-      {category}
+      {category}{subcategory ? ` - ${subcategory}` : ''}
     </span>
   );
 }

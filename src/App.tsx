@@ -44,7 +44,7 @@ function App() {
             {recommendations.map((recommendation) => (
               <div key={recommendation.id} className="flex flex-col items-center justify-center gap-2 p-4 border rounded-lg">
                 <p className="font-medium">{recommendation.name}</p>
-                <CategoryBadge category={recommendation.category} />
+                <CategoryBadge category={recommendation.category} subcategory={recommendation.subcategory} />
                 <p className="text-sm text-gray-600">Score: {recommendation.totalScore}</p>
               </div>
             ))}
