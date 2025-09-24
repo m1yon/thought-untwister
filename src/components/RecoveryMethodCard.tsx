@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CategoryBadge from './CategoryBadge';
 import { Checkbox } from './ui/checkbox';
+import { cn } from '@/lib/utils';
 
 interface RecoveryMethodCardProps {
   recoveryMethod: {
@@ -15,8 +16,8 @@ export default function RecoveryMethodCard({ recoveryMethod }: RecoveryMethodCar
   const [isChecked, setIsChecked] = useState(false);
 
   return (
-    <div 
-      className={`p-4 border rounded-lg flex items-center gap-3 cursor-pointer ${isChecked ? 'bg-gray-100 opacity-60' : ''}`}
+    <div
+      className={cn('p-4 border rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-50', isChecked ? 'bg-gray-100 opacity-60' : '')}
       onClick={() => setIsChecked(!isChecked)}
     >
       <Checkbox
@@ -25,12 +26,12 @@ export default function RecoveryMethodCard({ recoveryMethod }: RecoveryMethodCar
         onClick={(e) => e.stopPropagation()}
       />
       <div className="flex-1">
-        <p className={`font-medium text-lg ${isChecked ? 'line-through' : ''}`}>
+        <p className={`font - medium text - lg ${isChecked ? 'line-through' : ''}`}>
           {recoveryMethod.name}
         </p>
-        <CategoryBadge 
-          category={recoveryMethod.category} 
-          subcategory={recoveryMethod.subcategory} 
+        <CategoryBadge
+          category={recoveryMethod.category}
+          subcategory={recoveryMethod.subcategory}
           disabled={isChecked}
         />
       </div>
