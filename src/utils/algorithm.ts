@@ -100,11 +100,11 @@ export const thoughtDistortions: ThoughtDistortion[] = [
 ];
 
 export const recoveryMethods: RecoveryMethod[] = [
-  // Cognitive
+  // Basic
   {
     id: "examine-the-evidence",
     name: "Examine the Evidence",
-    category: "Cognitive",
+    category: "Basic",
     scores: {
       overgeneralization: 2,
       "mental-filter": 2,
@@ -121,7 +121,7 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "double-standard",
     name: "Double Standard Technique",
-    category: "Cognitive",
+    category: "Basic",
     scores: {
       "all-or-nothing": 1,
       "should-statements": 2,
@@ -132,7 +132,7 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "positive-reframing",
     name: "Positive Reframing",
-    category: "Cognitive",
+    category: "Basic",
     scores: {
       "mental-filter": 1,
       "discounting-positives": 1,
@@ -140,12 +140,10 @@ export const recoveryMethods: RecoveryMethod[] = [
       "other-blame": 1,
     },
   },
-
-  // Truth Based
   {
     id: "experimental-technique",
     name: "Experimental Technique",
-    category: "Truth Based",
+    category: "Basic",
     scores: {
       "all-or-nothing": 1,
       overgeneralization: 2,
@@ -160,7 +158,7 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "survey-technique",
     name: "Survey Technique",
-    category: "Truth Based",
+    category: "Basic",
     scores: {
       overgeneralization: 2,
       "mind-reading": 2,
@@ -172,15 +170,13 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "reattribution",
     name: "Reattribution",
-    category: "Truth Based",
+    category: "Basic",
     scores: { "self-blame": 2, "other-blame": 2 },
   },
-
-  // Logic Based
   {
     id: "socratic-method",
     name: "Socratic Method",
-    category: "Logic Based",
+    category: "Cognitive",
     scores: {
       "all-or-nothing": 2,
       overgeneralization: 2,
@@ -197,7 +193,7 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "thinking-in-shades",
     name: "Thinking in Shades of Gray",
-    category: "Logic Based",
+    category: "Cognitive",
     scores: {
       "all-or-nothing": 2,
       overgeneralization: 1,
@@ -206,38 +202,34 @@ export const recoveryMethods: RecoveryMethod[] = [
       labeling: 1,
     },
   },
-
-  // Semantic
   {
     id: "semantic-method",
     name: "Semantic Method",
-    category: "Semantic",
+    category: "Cognitive",
     scores: { "all-or-nothing": 2, overgeneralization: 2, labeling: 2 },
   },
   {
     id: "define-terms",
     name: "Let's Define Terms",
-    category: "Semantic",
+    category: "Cognitive",
     scores: { "all-or-nothing": 2, overgeneralization: 1, labeling: 2 },
   },
   {
     id: "be-specific",
     name: "Be Specific",
-    category: "Semantic",
+    category: "Cognitive",
     scores: { "all-or-nothing": 2, overgeneralization: 1, labeling: 1 },
   },
-
-  // Quantitative
   {
     id: "worst-best-average",
     name: "Worst, Best, Average Analysis",
-    category: "Quantitative",
+    category: "Cognitive",
     scores: { "fortune-telling": 2, "magnification-minimization": 2 },
   },
   {
     id: "self-monitoring",
     name: "Self-Monitoring",
-    category: "Quantitative",
+    category: "Cognitive",
     scores: {
       "all-or-nothing": 1,
       overgeneralization: 1,
@@ -251,34 +243,28 @@ export const recoveryMethods: RecoveryMethod[] = [
       "other-blame": 1,
     },
   },
-
-  // Human Based
   {
     id: "shame-attacking",
     name: "Shame-Attacking Exercises",
-    category: "Human Based",
+    category: "Exposure",
     scores: { "fortune-telling": 1, "should-statements": 2, "self-blame": 1 },
   },
-
-  // Role Play
   {
     id: "externalization-of-voices",
     name: "Externalization of Voices",
-    category: "Role Play",
+    category: "Exposure",
     scores: { "all-or-nothing": 1, "should-statements": 2, "self-blame": 1 },
   },
   {
     id: "feared-fantasy",
     name: "Feared Fantasy",
-    category: "Role Play",
+    category: "Exposure",
     scores: { "fortune-telling": 1, "magnification-minimization": 1 },
   },
-
-  // Philosophical/Spiritual
   {
     id: "acceptance-paradox",
     name: "Acceptance Paradox",
-    category: "Philosophical/Spiritual",
+    category: "Basic",
     scores: {
       "all-or-nothing": 1,
       overgeneralization: 1,
@@ -292,11 +278,9 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "time-projection",
     name: "Time Projection",
-    category: "Philosophical/Spiritual",
+    category: "Basic",
     scores: { "fortune-telling": 1, "magnification-minimization": 1 },
   },
-
-  // Uncovering
   {
     id: "downward-arrow",
     name: "Individual Downward Arrow",
@@ -326,12 +310,10 @@ export const recoveryMethods: RecoveryMethod[] = [
       "emotional-reasoning": 1,
     },
   },
-
-  // Habits and Addictions
   {
     id: "cost-benefit-analysis",
     name: "Cost-Benefit Analysis",
-    category: "Habits and Addictions",
+    category: "Basic",
     scores: {
       "all-or-nothing": 2,
       overgeneralization: 2,
@@ -350,11 +332,9 @@ export const recoveryMethods: RecoveryMethod[] = [
   {
     id: "devils-advocate",
     name: "Devil's Advocate Technique",
-    category: "Habits and Addictions",
+    category: "Basic",
     scores: { "emotional-reasoning": 1 },
   },
-
-  // Motivational
   {
     id: "anti-procrastination-sheet",
     name: "Anti-Procrastination Sheet",
@@ -366,8 +346,6 @@ export const recoveryMethods: RecoveryMethod[] = [
       labeling: 1,
     },
   },
-
-  // Interpersonal
   {
     id: "five-secrets-communication",
     name: "Five Secrets of Effective Communication",
