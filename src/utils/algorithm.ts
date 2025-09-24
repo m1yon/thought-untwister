@@ -1117,6 +1117,13 @@ export function getRankedExercises(
     return [];
   }
 
+  // Define the priority methods that should always come first
+  const priorityMethodIDs = [
+    "positive-reframing",
+    "magic-dial",
+    "straightforward-technique",
+  ];
+
   const rankedExercises = recoveryMethods
     .map((exercise) => {
       // Calculate the total score for the current exercise based on selected distortions
@@ -1130,8 +1137,29 @@ export function getRankedExercises(
     })
     // Filter out exercises that have no effect on the selected distortions
     .filter((exercise) => exercise.totalScore > 0)
-    // Sort the exercises from highest score to lowest
-    .sort((a, b) => b.totalScore - a.totalScore);
+    // Sort the exercises with priority methods first, then by score
+    .sort((a, b) => {
+      const aIsPriority = priorityMethodIDs.indexOf(a.id);
+      const bIsPriority = priorityMethodIDs.indexOf(b.id);
+
+      // If both are priority methods, sort by their order in the priority list
+      if (aIsPriority !== -1 && bIsPriority !== -1) {
+        return aIsPriority - bIsPriority;
+      }
+
+      // If only a is a priority method, it comes first
+      if (aIsPriority !== -1) {
+        return -1;
+      }
+
+      // If only b is a priority method, it comes first
+      if (bIsPriority !== -1) {
+        return 1;
+      }
+
+      // If neither is a priority method, sort by score
+      return b.totalScore - a.totalScore;
+    });
 
   return rankedExercises;
 }
