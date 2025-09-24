@@ -18,6 +18,7 @@ export interface RecoveryMethod {
   id: string;
   name: string;
   category: string;
+  subcategory?: string;
   // This property will be added dynamically by the ranking function
   totalScore?: number;
   scores: Record<ThoughtDistortionID, number>;
@@ -176,6 +177,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "double-standard-technique",
     name: "Double Standard Technique",
     category: "Cognitive",
+    subcategory: "Compassionate",
     scores: {
       "all-or-nothing-thinking": 3,
       overgeneralization: 3,
@@ -195,6 +197,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "examine-the-evidence",
     name: "Examine the Evidence",
     category: "Cognitive",
+    subcategory: "Truth-Based",
     scores: {
       "all-or-nothing-thinking": 1,
       overgeneralization: 3,
@@ -214,6 +217,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "experimental-technique",
     name: "Experimental Technique",
     category: "Cognitive",
+    subcategory: "Truth-Based",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -233,6 +237,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "survey-technique",
     name: "Survey Technique",
     category: "Cognitive",
+    subcategory: "Truth-Based",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 1,
@@ -252,6 +257,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "reattribution",
     name: "Reattribution",
     category: "Cognitive",
+    subcategory: "Truth-Based",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -271,6 +277,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "socratic-method",
     name: "Socratic Method",
     category: "Cognitive",
+    subcategory: "Logic-Based",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -290,6 +297,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "thinking-in-shades-of-gray",
     name: "Thinking in Shades of Gray",
     category: "Cognitive",
+    subcategory: "Logic-Based",
     scores: {
       "all-or-nothing-thinking": 2,
       overgeneralization: 0,
@@ -309,6 +317,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "semantic-method",
     name: "Semantic Method",
     category: "Cognitive",
+    subcategory: "Semantic",
     scores: {
       "all-or-nothing-thinking": 1,
       overgeneralization: 0,
@@ -328,6 +337,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "lets-define-terms",
     name: "Let's Define Terms",
     category: "Cognitive",
+    subcategory: "Semantic",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 3,
@@ -347,6 +357,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "be-specific",
     name: "Be Specific",
     category: "Cognitive",
+    subcategory: "Semantic",
     scores: {
       "all-or-nothing-thinking": 1,
       overgeneralization: 3,
@@ -366,6 +377,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "worst-best-average",
     name: "Worst, Best, Average",
     category: "Cognitive",
+    subcategory: "Semantic",
     scores: {
       "all-or-nothing-thinking": 1,
       overgeneralization: 3,
@@ -385,6 +397,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "self-monitoring",
     name: "Self-Monitoring",
     category: "Cognitive",
+    subcategory: "Quantitative",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -404,6 +417,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "negative-practice-worry-breaks",
     name: "Negative Practice/Worry Breaks",
     category: "Cognitive",
+    subcategory: "Quantitative",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -423,6 +437,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "paradoxical-magnification",
     name: "Paradoxical Magnification",
     category: "Cognitive",
+    subcategory: "Humor-Based",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -442,6 +457,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "shame-attacking-exercises",
     name: "Shame-Attacking Exercises",
     category: "Cognitive",
+    subcategory: "Humor-Based",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -461,6 +477,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "externalization-of-voices",
     name: "Externalization of Voices",
     category: "Cognitive",
+    subcategory: "Role-Play",
     scores: {
       "all-or-nothing-thinking": 3,
       overgeneralization: 3,
@@ -480,6 +497,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "feared-fantasy",
     name: "Feared Fantasy",
     category: "Cognitive",
+    subcategory: "Role-Play",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -499,6 +517,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "acceptance-paradox",
     name: "Acceptance Paradox",
     category: "Cognitive",
+    subcategory: "Philosophical/Spiritual",
     scores: {
       "all-or-nothing-thinking": 3,
       overgeneralization: 3,
@@ -518,6 +537,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "time-projection",
     name: "Time Projection",
     category: "Cognitive",
+    subcategory: "Visual Imaging",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -537,6 +557,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "humorous-imaging",
     name: "Humorous Imaging",
     category: "Cognitive",
+    subcategory: "Visual Imaging",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -556,6 +577,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "cognitive-hypothesis",
     name: "Cognitive Hypothesis",
     category: "Cognitive",
+    subcategory: "Visual Imaging",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -788,6 +810,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "gradual-exposure-and-flooding",
     name: "Gradual Exposure and Flooding",
     category: "Exposure",
+    subcategory: "Classical",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -807,6 +830,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "response-prevention",
     name: "Response Prevention",
     category: "Exposure",
+    subcategory: "Classical",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -826,6 +850,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "distraction",
     name: "Distraction",
     category: "Exposure",
+    subcategory: "Classical",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -845,6 +870,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "cognitive-flooding",
     name: "Cognitive Flooding",
     category: "Exposure",
+    subcategory: "Cognitive",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -864,6 +890,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "image-substitution",
     name: "Image Substitution",
     category: "Exposure",
+    subcategory: "Cognitive",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -883,6 +910,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "memory-rescripting",
     name: "Memory Rescripting",
     category: "Exposure",
+    subcategory: "Cognitive",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -902,6 +930,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "smile-and-hello-practice",
     name: "Smile and Hello Practice",
     category: "Exposure",
+    subcategory: "Interpersonal Exposure",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -921,6 +950,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "talk-show-host",
     name: "Talk Show Host",
     category: "Exposure",
+    subcategory: "Interpersonal Exposure",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -940,6 +970,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "self-disclosure",
     name: "Self-Disclosure",
     category: "Exposure",
+    subcategory: "Interpersonal Exposure",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -959,6 +990,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "flirting-training",
     name: "Flirting Training",
     category: "Exposure",
+    subcategory: "Interpersonal Exposure",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
@@ -978,6 +1010,7 @@ export const recoveryMethods: RecoveryMethod[] = [
     id: "rejection-practice",
     name: "Rejection Practice",
     category: "Exposure",
+    subcategory: "Interpersonal Exposure",
     scores: {
       "all-or-nothing-thinking": 0,
       overgeneralization: 0,
