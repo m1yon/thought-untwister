@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import CategoryBadge from './CategoryBadge';
 import MatchingDistortionBadge from './MatchingDistortionBadge';
 import { Checkbox } from './ui/checkbox';
 import { cn } from '@/lib/utils';
@@ -31,11 +30,9 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
         <p className={`font-medium text-lg ${isChecked ? 'line-through' : ''}`}>
           {recoveryMethod.name}
         </p>
-        <CategoryBadge
-          category={recoveryMethod.category}
-          subcategory={recoveryMethod.subcategory}
-          disabled={isChecked}
-        />
+        <p className={`text-sm text-gray-600 ${isChecked ? 'opacity-60' : ''}`}>
+          {recoveryMethod.category}{recoveryMethod.subcategory ? ` • ${recoveryMethod.subcategory}` : ''}
+        </p>
         {matchingDistortions.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
             {matchingDistortions.map(distortionId => (
