@@ -37,8 +37,8 @@ export default function MatchingDistortionBadge({ distortions, score }: Matching
   const distortionNames = distortions.map(id => thoughtDistortionNames[id]).join(', ');
 
   return (
-    <div className={`px-3 py-1.5 mb-1 w-fit rounded-full text-xs font-medium border inline-flex items-center ${getScoreStyles(score)}`}>
-      <Trophy className="w-4 h-4 mr-2 flex-shrink-0" />
+    <div className={`px-3 py-3 mb-2 rounded-md text-sm font-medium border flex items-center ${getScoreStyles(score)}`}>
+      <Trophy className="w-5 h-5 mr-2 flex-shrink-0" />
       <span className="inline">
         <strong>{getScoreText(score)}:</strong>&nbsp;{distortionNames}
       </span>

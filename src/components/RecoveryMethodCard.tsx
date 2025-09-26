@@ -39,7 +39,7 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
         <p className={`font-medium text-lg ${isChecked ? 'line-through' : ''}`}>
           {recoveryMethod.name}
         </p>
-        <p className={`text-sm text-gray-600 mb-2 ${isChecked ? 'opacity-60' : ''}`}>
+        <p className={`text-xs text-gray-600 mb-2 ${isChecked ? 'opacity-60' : ''}`}>
           {recoveryMethod.category}{recoveryMethod.subcategory ? ` • ${recoveryMethod.subcategory}` : ''}
         </p>
         {Object.keys(distortionsByScore).length > 0 && (
