@@ -7,7 +7,7 @@ interface MatchingDistortionBadgeProps {
   score: number;
 }
 
-export default function MatchingDistortionBadge({ distortions, score }: MatchingDistortionBadgeProps) {
+export default function MatchingDistortions({ distortions, score }: MatchingDistortionBadgeProps) {
   const getScoreText = (score: number) => {
     switch (score) {
       case 3:

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MatchingDistortionsBadge from './MatchingDistortionsBadge';
+import MatchingDistortions from './MatchingDistortions';
 import { Checkbox } from './ui/checkbox';
 import { cn } from '@/lib/utils';
 import type { RecoveryMethod, ThoughtDistortionID } from '@/utils/algorithm';
@@ -39,7 +39,7 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
         <p className={`font-medium text-lg ${isChecked ? 'line-through' : ''}`}>
           {recoveryMethod.name}
         </p>
-        <p className={`text-xs text-gray-600 mb-2 ${isChecked ? 'opacity-60' : ''}`}>
+        <p className={`text-sm text-gray-600 mb-2 ${isChecked ? 'opacity-60' : ''}`}>
           {recoveryMethod.category}{recoveryMethod.subcategory ? ` • ${recoveryMethod.subcategory}` : ''}
         </p>
         {Object.keys(distortionsByScore).length > 0 && (
@@ -47,7 +47,7 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
             {Object.entries(distortionsByScore)
               .sort(([a], [b]) => Number(b) - Number(a))
               .map(([score, distortions]) => (
-                <MatchingDistortionsBadge
+                <MatchingDistortions
                   key={score}
                   distortions={distortions}
                   score={Number(score)}
