@@ -16,6 +16,15 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
     recoveryMethod.scores[distortionId] > 0
   );
 
+  const distortionsByScore = matchingDistortions.reduce((acc, distortionId) => {
+    const score = recoveryMethod.scores[distortionId];
+    if (!acc[score]) {
+      acc[score] = [];
+    }
+    acc[score].push(distortionId);
+    return acc;
+  }, {} as Record<number, ThoughtDistortionID[]>);
+
   return (
     <div
       className={cn('p-4 border rounded-lg flex items-center gap-4 cursor-pointer hover:bg-gray-50', isChecked ? 'bg-gray-100 opacity-60' : '')}
@@ -30,19 +39,21 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
         <p className={`font-medium text-lg ${isChecked ? 'line-through' : ''}`}>
           {recoveryMethod.name}
         </p>
-        <p className={`text-sm text-gray-600 ${isChecked ? 'opacity-60' : ''}`}>
+        <p className={`text-sm text-gray-600 mb-2 ${isChecked ? 'opacity-60' : ''}`}>
           {recoveryMethod.category}{recoveryMethod.subcategory ? ` • ${recoveryMethod.subcategory}` : ''}
         </p>
-        {matchingDistortions.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {matchingDistortions.map(distortionId => (
-              <MatchingDistortionBadge
-                key={distortionId}
-                distortionId={distortionId}
-                score={recoveryMethod.scores[distortionId]}
-              />
-            ))}
-          </div>
+        {Object.keys(distortionsByScore).length > 0 && (
+          <>
+            {Object.entries(distortionsByScore)
+              .sort(([a], [b]) => Number(b) - Number(a))
+              .map(([score, distortions]) => (
+                <MatchingDistortionBadge
+                  key={score}
+                  distortions={distortions}
+                  score={Number(score)}
+                />
+              ))}
+          </>
         )}
       </div>
     </div>

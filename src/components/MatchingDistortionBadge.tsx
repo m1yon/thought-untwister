@@ -2,19 +2,19 @@ import { thoughtDistortionNames } from '@/utils/algorithm';
 import type { ThoughtDistortionID } from '@/utils/algorithm';
 
 interface MatchingDistortionBadgeProps {
-  distortionId: ThoughtDistortionID;
+  distortions: ThoughtDistortionID[];
   score: number;
 }
 
-export default function MatchingDistortionBadge({ distortionId, score }: MatchingDistortionBadgeProps) {
+export default function MatchingDistortionBadge({ distortions, score }: MatchingDistortionBadgeProps) {
   const getScoreText = (score: number) => {
     switch (score) {
       case 3:
-        return 'Works for almost everyone';
+        return 'Almost always untwists';
       case 2:
-        return 'Works for most people';
+        return 'Most of the time untwists';
       case 1:
-        return 'Works for some people';
+        return 'Sometimes untwists';
       default:
         return '';
     }
@@ -33,10 +33,11 @@ export default function MatchingDistortionBadge({ distortionId, score }: Matchin
     }
   };
 
+  const distortionNames = distortions.map(id => thoughtDistortionNames[id]).join(', ');
+
   return (
-    <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium border ${getScoreStyles(score)}`}>
-      <span className="mr-1.5">{thoughtDistortionNames[distortionId]}</span>
-      <span className="font-semibold">• {getScoreText(score)}</span>
-    </span>
+    <div className={`px-3 py-1.5 mb-1 w-fit rounded-full text-xs font-medium border ${getScoreStyles(score)}`}>
+      <strong>{getScoreText(score)}:</strong> {distortionNames}
+    </div>
   );
 }
