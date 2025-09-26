@@ -1,5 +1,6 @@
 import { thoughtDistortionNames } from '@/utils/algorithm';
 import type { ThoughtDistortionID } from '@/utils/algorithm';
+import { Trophy } from 'lucide-react';
 
 interface MatchingDistortionBadgeProps {
   distortions: ThoughtDistortionID[];
@@ -23,7 +24,7 @@ export default function MatchingDistortionBadge({ distortions, score }: Matching
   const getScoreStyles = (score: number) => {
     switch (score) {
       case 3:
-        return 'bg-yellow-100 text-yellow-900 border-yellow-300 shadow-md';
+        return 'bg-yellow-100 text-yellow-900 border-yellow-300';
       case 2:
         return 'bg-gray-100 text-gray-700 border-gray-300';
       case 1:
@@ -36,8 +37,11 @@ export default function MatchingDistortionBadge({ distortions, score }: Matching
   const distortionNames = distortions.map(id => thoughtDistortionNames[id]).join(', ');
 
   return (
-    <div className={`px-3 py-1.5 mb-1 w-fit rounded-full text-xs font-medium border ${getScoreStyles(score)}`}>
-      <strong>{getScoreText(score)}:</strong> {distortionNames}
+    <div className={`px-3 py-1.5 mb-1 w-fit rounded-full text-xs font-medium border inline-flex items-center ${getScoreStyles(score)}`}>
+      <Trophy className="w-4 h-4 mr-2 flex-shrink-0" />
+      <span className="inline">
+        <strong>{getScoreText(score)}:</strong>&nbsp;{distortionNames}
+      </span>
     </div>
   );
 }
