@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import CategoryBadge from './CategoryBadge';
+import MatchingDistortionBadge from './MatchingDistortionBadge';
 import { Checkbox } from './ui/checkbox';
 import { cn } from '@/lib/utils';
 import type { RecoveryMethod, ThoughtDistortionID } from '@/utils/algorithm';
-import { thoughtDistortionNames } from '@/utils/algorithm';
 
 interface RecoveryMethodCardProps {
   recoveryMethod: RecoveryMethod
@@ -39,15 +39,11 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
         {matchingDistortions.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
             {matchingDistortions.map(distortionId => (
-              <span
+              <MatchingDistortionBadge
                 key={distortionId}
-                className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
-              >
-                {thoughtDistortionNames[distortionId]}
-                <span className="ml-1 font-semibold">
-                  {recoveryMethod.scores[distortionId]}
-                </span>
-              </span>
+                distortionId={distortionId}
+                score={recoveryMethod.scores[distortionId]}
+              />
             ))}
           </div>
         )}
