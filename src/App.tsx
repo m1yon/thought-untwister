@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ToggleGroup, ToggleGroupItem } from './components/ui/toggle-group';
 import { Tooltip, TooltipTrigger, TooltipContent } from './components/ui/tooltip';
 import RecoveryMethodCard from './components/RecoveryMethodCard';
-import { getRankedExercises as getRankedRecoveryMethods, thoughtDistortions, type ThoughtDistortionID } from './utils/algorithm';
+import { getRankedExercises as getRankedRecoveryMethods, thoughtDistortionNames, thoughtDistortions, type ThoughtDistortionID } from './utils/algorithm';
 
 function App() {
   const [selectedDistortions, setSelectedDistortions] = useState<ThoughtDistortionID[]>([]);
@@ -26,7 +26,7 @@ function App() {
                 className="px-4 py-2 min-w-fit flex-0"
               >
                 <TooltipTrigger>
-                  {distortion.name}
+                  {thoughtDistortionNames[distortion.id]}
                 </TooltipTrigger>
               </ToggleGroupItem>
               <TooltipContent>

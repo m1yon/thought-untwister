@@ -3,7 +3,6 @@
  */
 export interface ThoughtDistortion {
   id: ThoughtDistortionID;
-  name: string;
   description: string;
 }
 
@@ -38,75 +37,78 @@ export type ThoughtDistortionID =
   | "self-blame"
   | "other-blame";
 
+export const thoughtDistortionNames: Record<ThoughtDistortionID, string> = {
+  "all-or-nothing-thinking": "All-or-Nothing Thinking",
+  overgeneralization: "Overgeneralization",
+  "mental-filter": "Mental Filter",
+  "discounting-the-positives": "Discounting the Positives",
+  "mind-reading": "Mind Reading",
+  "fortune-telling": "Fortune Telling",
+  "magnification-and-minimization": "Magnification & Minimization",
+  "emotional-reasoning": "Emotional Reasoning",
+  "should-statements": "Should Statements",
+  labeling: "Labeling",
+  "self-blame": "Personalization (Self-Blame)",
+  "other-blame": "Personalization (Other-Blame)",
+};
+
 export const thoughtDistortions: ThoughtDistortion[] = [
   {
     id: "all-or-nothing-thinking",
-    name: "All-or-Nothing Thinking",
     description: "Viewing situations in absolute, black-and-white terms.",
   },
   {
     id: "overgeneralization",
-    name: "Overgeneralization",
     description:
       "Seeing a single negative event as a never-ending pattern of defeat.",
   },
   {
     id: "mental-filter",
-    name: "Mental Filter",
     description:
       "Dwelling on a single negative detail, filtering out all positive aspects.",
   },
   {
     id: "discounting-the-positives",
-    name: "Discounting the Positives",
     description:
       "Insisting that your positive qualities or accomplishments don't count.",
   },
   {
     id: "mind-reading",
-    name: "Mind Reading",
     description:
       "Assuming you know what others are thinking without any real evidence.",
   },
   {
     id: "fortune-telling",
-    name: "Fortune Telling",
     description:
       "Predicting that things will turn out badly as an established fact.",
   },
   {
     id: "magnification-and-minimization",
-    name: "Magnification & Minimization",
     description:
       "Blowing things out of proportion or shrinking their importance.",
   },
   {
     id: "emotional-reasoning",
-    name: "Emotional Reasoning",
     description:
       "Believing that your emotions reflect the way things really are.",
   },
   {
     id: "should-statements",
-    name: "Should Statements",
     description:
       'Using "shoulds" and "shouldn\'ts" on yourself and others, leading to guilt or frustration.',
   },
   {
     id: "labeling",
-    name: "Labeling",
     description:
       "Applying a fixed, global label to yourself or others instead of describing a specific behavior.",
   },
   {
     id: "self-blame",
-    name: "Personalization (Self-Blame)",
     description:
       "Blaming yourself for something you weren't entirely responsible for.",
   },
   {
     id: "other-blame",
-    name: "Personalization (Other-Blame)",
     description:
       "Blaming others for your problems while overlooking your own role.",
   },

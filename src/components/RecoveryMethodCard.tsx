@@ -3,6 +3,7 @@ import CategoryBadge from './CategoryBadge';
 import { Checkbox } from './ui/checkbox';
 import { cn } from '@/lib/utils';
 import type { RecoveryMethod, ThoughtDistortionID } from '@/utils/algorithm';
+import { thoughtDistortionNames } from '@/utils/algorithm';
 
 interface RecoveryMethodCardProps {
   recoveryMethod: RecoveryMethod
@@ -42,7 +43,7 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
                 key={distortionId}
                 className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
               >
-                {distortionId}
+                {thoughtDistortionNames[distortionId]}
                 <span className="ml-1 font-semibold">
                   {recoveryMethod.scores[distortionId]}
                 </span>
