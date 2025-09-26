@@ -44,7 +44,7 @@ function App() {
             <p className="text-center text-gray-600 text-sm mb-4">{recommendedRecoveryMethods.length} recovery methods found</p>
             <div className="flex flex-col gap-4 w-full">
               {recommendedRecoveryMethods.map((recoveryMethod) => (
-                <RecoveryMethodCard key={recoveryMethod.id} recoveryMethod={recoveryMethod} />
+                <RecoveryMethodCard key={recoveryMethod.id} recoveryMethod={recoveryMethod} selectedDistortions={selectedDistortions} />
               ))}
             </div>
           </>
