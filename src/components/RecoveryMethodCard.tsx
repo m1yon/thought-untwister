@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import MatchingDistortionBadge from './MatchingDistortionBadge';
+import MatchingDistortionsBadge from './MatchingDistortionsBadge';
 import { Checkbox } from './ui/checkbox';
 import { cn } from '@/lib/utils';
 import type { RecoveryMethod, ThoughtDistortionID } from '@/utils/algorithm';
@@ -47,7 +47,7 @@ export default function RecoveryMethodCard({ recoveryMethod, selectedDistortions
             {Object.entries(distortionsByScore)
               .sort(([a], [b]) => Number(b) - Number(a))
               .map(([score, distortions]) => (
-                <MatchingDistortionBadge
+                <MatchingDistortionsBadge
                   key={score}
                   distortions={distortions}
                   score={Number(score)}
