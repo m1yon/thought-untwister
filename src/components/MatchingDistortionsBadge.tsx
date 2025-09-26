@@ -10,11 +10,11 @@ export default function MatchingDistortionBadge({ distortions, score }: Matching
   const getScoreText = (score: number) => {
     switch (score) {
       case 3:
-        return 'Almost always untwists';
+        return 'Amazing at untwisting';
       case 2:
-        return 'Most of the time untwists';
+        return 'Great at untwisting';
       case 1:
-        return 'Sometimes untwists';
+        return 'Good at untwisting';
       default:
         return '';
     }
@@ -23,11 +23,11 @@ export default function MatchingDistortionBadge({ distortions, score }: Matching
   const getScoreStyles = (score: number) => {
     switch (score) {
       case 3:
-        return 'bg-green-100 text-green-800 border-green-200';
+        return 'bg-yellow-100 text-yellow-900 border-yellow-300 shadow-md';
       case 2:
-        return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+        return 'bg-gray-100 text-gray-700 border-gray-300';
       case 1:
-        return 'bg-orange-100 text-orange-800 border-orange-200';
+        return 'bg-orange-100 text-orange-800 border-orange-300';
       default:
         return 'bg-gray-100 text-gray-800 border-gray-200';
     }
